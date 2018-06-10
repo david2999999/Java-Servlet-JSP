@@ -8,7 +8,6 @@
 <title>Todo List</title>
 </head>
 <body>
-
 	<form action="todo-demo.jsp">
 		Add new item: <input type="text" name="theItem"/>
 		<button type="submit">Submit</button>
@@ -29,7 +28,7 @@
 		
 		// see if there is form data to add
 		String theItem = request.getParameter("theItem");
-		if(theItem != null){
+		if((theItem != null) && (!theItem.trim().equals(""))){
 			items.add(theItem);
 		}
 	%>
