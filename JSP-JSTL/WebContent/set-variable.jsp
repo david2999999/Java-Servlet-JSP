@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Testing</title>
+<title>Set variable</title>
 </head>
 <body>
 	<c:set var="stuff" value="<%= new java.util.Date() %>"/>
