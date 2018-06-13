@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Student Tracker App</title>
+<link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 	<%
 		List<Student> theStudents = (List<Student>) request.getAttribute("STUDENT_LIST");
