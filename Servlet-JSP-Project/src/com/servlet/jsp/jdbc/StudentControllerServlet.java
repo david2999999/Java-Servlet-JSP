@@ -46,12 +46,51 @@ public class StudentControllerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			// list the students ... in MVC fashion
-			listStudents(request, response);
+			// read the "command" parameter
+			String theCommand = request.getParameter("command");
+			
+			// if theCommand is missing, then default to listing students
+			if( theCommand == null ) {
+				theCommand = "LIST";
+			}
+			
+			
+			// router to the appropriate method
+			switch(theCommand) {
+			case "LIST": 
+				listStudents(request, response);
+				break;
+			
+			case "ADD":
+				addStudent(request, response);
+				break;
+				
+			default:
+				listStudents(request, response);
+			}
+
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
 
+	}
+
+
+	private void addStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// read student info from form data
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String email = request.getParameter("email");
+		
+		// create a new student object
+		Student theStudent = new Student(firstName, lastName, email);
+		
+		// add the student to the database
+		studentDbUtil.addStudent(theStudent);
+		
+		// send back to main page (the student list)
+		listStudents(request, response);
+		
 	}
 
 
