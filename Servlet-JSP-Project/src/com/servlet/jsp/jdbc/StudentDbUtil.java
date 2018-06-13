@@ -1,6 +1,7 @@
 package com.servlet.jsp.jdbc;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -78,8 +79,33 @@ public class StudentDbUtil {
 		
 	}
 
-	public void addStudent(Student theStudent) {
+	public void addStudent(Student theStudent) throws Exception{
 		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		try {
+			// create sql for insert
+			myConn = dataSource.getConnection();
+			String sql = "insert into student (first_name, last_name, email) values (?, ?, ?)";
+			
+			myStmt = myConn.prepareStatement(sql);
+			
+			// set the param value for the student
+			myStmt.setString(1, theStudent.getFirstName());
+			myStmt.setString(2, theStudent.getLastName());
+			myStmt.setString(3, theStudent.getEmail());
+			
+			
+			// execute sql insert
+			myStmt.execute();
+			
+		} catch (Exception e) {
+			// clean up JDBC object
+			close(myConn, myStmt, null);
+		}
+		
+
 		
 	}
 }
