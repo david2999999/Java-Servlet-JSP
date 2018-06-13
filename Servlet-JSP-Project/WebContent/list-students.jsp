@@ -26,16 +26,24 @@
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Email</th>
+					<th>Action</th>
 				</tr>
 
 				<c:forEach var="tempStudent" items="${ STUDENT_LIST }">
+				
+					<c:url var="tempLink" value="StudentControllerServlet">
+						<c:param name="command" value="LOAD"/>
+						<c:param name="studentID" value="${tempStudent.id}"/>
+					</c:url>
+					
 					<tr>
 						<td>${ tempStudent.firstName }</td>
 						<td>${ tempStudent.getLastName() }</td>
 						<td>${ tempStudent.getEmail() }</td>
+						<td><a href="${ tempLink }">Update</a></td>
 					</tr>
 				</c:forEach>
-			</table>
+			</table> 
 		</div>
 	</div>
 </body>
