@@ -139,7 +139,7 @@ public class StudentDbUtil {
 			// retrieve data from result
 			if(myRs.next()) {
 				String firstName = myRs.getString("first_name");
-				String lastName = myRs.getString("lastName");
+				String lastName = myRs.getString("last_name");
 				String email = myRs.getString("email");
 				
 				// use the studentID during construction

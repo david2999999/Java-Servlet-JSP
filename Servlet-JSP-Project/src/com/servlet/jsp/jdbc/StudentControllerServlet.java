@@ -82,7 +82,7 @@ public class StudentControllerServlet extends HttpServlet {
 
 	private void loadStudent(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		// read student id from form data
-		String theStudentId = request.getParameter("studentId");
+		String theStudentId = request.getParameter("studentID");
 		
 		// get student from the database (dbUtil)
 		Student theStudent = studentDbUtil.getStudent(theStudentId);
