@@ -157,6 +157,11 @@ public class StudentDbUtil {
 		
 
 	}
+
+	public void updateStudent(Student theStudent) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 
